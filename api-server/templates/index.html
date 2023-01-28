@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Page</title>
+    <style>
+        /* center the text box and button on the page */
+        .center {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        /* Material Design style for the button */
+        .search-btn {
+            background-color: green;
+            color: white;
+            font-size: 18px;
+            padding: 12px 24px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            margin-top: 10px;
+            margin-left: 10px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            border: none;
+        }
+
+        /* Matching the size of the textbox with the button */
+        input[type=text] {
+            width: 500px;
+            /* you can increase the width as per your requirement */
+            padding: 12px 20px;
+            margin: 8px 0;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            float: left;
+        }
+
+        /* hover effect for the button */
+        .search-btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="center">
+        <form action="searchresults" method="GET">
+            <input type="text" id="tbx_identifier" placeholder="Enter patient identifier">
+            <button class="search-btn" type="submit">Find Patient</button>
+        </form>
+    </div>
+</body>
+
+</html>

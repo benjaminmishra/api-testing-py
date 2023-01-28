@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Search Results</title>
+    <style>
+        /* minimal style for the back button */
+        .back-btn button {
+            background-color: transparent;
+            color: black;
+            border: none;
+            padding: 12px 16px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        /* center the contents of the page */
+        .center {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+    </style>
+    <script type="text/javascript">
+        // Get the query string from the URL
+        var queryString = window.location.search;
+
+        // Check if the query string contains a patient identifier
+        if (err_msg == undefined) {
+            // If the identifier is found, display the "found_div" and hide the "notfound_div"
+            document.getElementById("found_div").style.display = "block";
+            document.getElementById("notfound_div").style.display = "none";
+        } else if (err_msg) {
+            // If the identifier is not found, display the "notfound_div" and hide the "found_div"
+            document.getElementById("found_div").style.display = "none";
+            document.getElementById("notfound_div").style.display = "block";
+        }
+    </script>
+
+</head>
+
+<body>
+    <div class="back-btn">
+        <button onclick="window.history.back()">&lt; Back</button>
+    </div>
+    <div class="center">
+        <div id="notfound_div">
+            <p>{{err_msg}}</b></p>
+            <h1>{{id}}</h1>
+            <!-- code to display search results here -->
+        </div>
+        <div id="found_div">
+            <p>Patient Found</b></p>
+
+            <ul style="list-style-type: none;">
+                <li>Name: {{name}}</li>
+                <li>DOB: {{dob}}</li>
+                <li>Gender: {{gender}}</li>
+            </ul>
+            <!-- code to display search results here -->
+        </div>
+    </div>
+</body>
+
+</html>
