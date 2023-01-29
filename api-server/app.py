@@ -74,9 +74,10 @@ def get_identifier():
     return Response(json.dumps(error), 404)
 
 
-@app.route('/')
+@app.route("/")
 def index():
-    return render_template('index.html')
+    return render_template("index.html")
+
 
 @app.route("/searchresults")
 def searchresults():
@@ -86,31 +87,56 @@ def searchresults():
 
     if not validate_id(id):
         error["error"] = "Invalid patient id"
-        return render_template('search-results.html',err_msg=error["error"], id=id)
+        return render_template("search-results.html", err_msg=error["error"], id=id)
 
     if id == "AP1989M":
         user = {"name": "Apollo", "dob": "1989", "gender": "Male"}
-        return render_template('search-results.html',name=user["name"],dob=user["dob"],gender=user["gender"])
+        return render_template(
+            "search-results.html",
+            name=user["name"],
+            dob=user["dob"],
+            gender=user["gender"],
+        )
 
     if id == "MHDH1988M":
         user = {"name": "Mahendersingh Dhoni", "dob": "1988", "gender": "Male"}
-        return render_template('search-results.html',name=user["name"],dob=user["dob"],gender=user["gender"])
+        return render_template(
+            "search-results.html",
+            name=user["name"],
+            dob=user["dob"],
+            gender=user["gender"],
+        )
 
     if id == "JURO1979F":
         user = {"name": "Julia Roberts", "dob": "1979", "gender": "Female"}
-        return render_template('search-results.html',name=user["name"],dob=user["dob"],gender=user["gender"])
+        return render_template(
+            "search-results.html",
+            name=user["name"],
+            dob=user["dob"],
+            gender=user["gender"],
+        )
 
     if id == "JO1997M":
         user = {"name": "John", "dob": "1997", "gender": "Male"}
-        return render_template('search-results.html',name=user["name"],dob=user["dob"],gender=user["gender"])
+        return render_template(
+            "search-results.html",
+            name=user["name"],
+            dob=user["dob"],
+            gender=user["gender"],
+        )
 
     if id == "VIKO1988M":
         user = {"name": "Virat Kohli", "dob": "1988", "gender": "Male"}
-        return render_template('search-results.html',name=user["name"],dob=user["dob"],gender=user["gender"])
+        return render_template(
+            "search-results.html",
+            name=user["name"],
+            dob=user["dob"],
+            gender=user["gender"],
+        )
 
     error["error"] = "No patient matches the identifier"
-    return render_template('search-results.html',err_msg=error["error"], id=id)
-    
+    return render_template("search-results.html", err_msg=error["error"], id=id)
+
 
 def identifier_formatting(name, dob, gender):
     namearray = name.split(" ")

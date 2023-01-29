@@ -3,8 +3,9 @@ import json
 import jsonpath
 import pytest
 
-from tests.test_data import BASE_URL
+from test_data import BASE_URL
 
+path = "/patients/identifier"
 
 @pytest.mark.parametrize(
     "name,dob,gender,expected_id",
@@ -16,7 +17,6 @@ from tests.test_data import BASE_URL
 )
 def test_get_patient_identifier_when_all_params_valid(name, dob, gender, expected_id):
     # arrange
-    path = "/patients/identifier"
     uri = BASE_URL + path + "?name=" + name + "&dob=" + dob + "&gender=" + gender
 
     # act
@@ -43,7 +43,6 @@ def test_get_patient_identifier_when_atleast_one_input_invalid(
     name, dob, gender, expected_error_code
 ):
     # arrange
-    path = "/patients/identifier"
     uri = BASE_URL + path + "?name=" + name + "&dob=" + dob + "&gender=" + gender
 
     # act
@@ -56,7 +55,6 @@ def test_get_patient_identifier_when_atleast_one_input_invalid(
 def test_get_patient_identifier_when_no_inputs():
 
     # arrange
-    path = "/patients/identifier"
     uri = BASE_URL + path
 
     # act

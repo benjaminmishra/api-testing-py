@@ -3,16 +3,14 @@ import json
 import jsonpath
 import pytest
 
-from test_data import INVALID_PATIENT_IDs, BASE_URL
+from test_data import EXISTING_PATIENT_IDs, VALID_PATIENT_IDs,INVALID_PATIENT_IDs, BASE_URL
 
-BASE_URL = "http://127.0.0.1:5000"
-
+path = "/identity"
 
 # Tests the POST /identity API call
 # Checks whether the api responds with Bad Request (400) if the identifier passed is invalid
 @pytest.mark.parametrize("id", INVALID_PATIENT_IDs)
 def test_create_identifier_invalid_input(id):
-    path = "/identity"
     uri = BASE_URL + path
     body = {"identifier": id}
 
@@ -30,7 +28,6 @@ def test_create_identifier_invalid_input(id):
 # Checks whether the api responds with Bad Request (400) if the identifier passed is invalid
 @pytest.mark.parametrize("id", INVALID_PATIENT_IDs)
 def get_user_invalid_input(id):
-    path = "/identity"
     uri = BASE_URL + path
     data = {"identifier": id}
 
@@ -45,9 +42,8 @@ def get_user_invalid_input(id):
 
 # Tests POST and GET /identifer api call with a valid input
 # Verifies the responses when user are passed in the apis
-@pytest.mark.parametrize("id", ["AP1989M", "MHDH1988M", "JURO1979F"])
+@pytest.mark.parametrize("id", VALID_PATIENT_IDs)
 def test_create_identifier_get_user_valid_input(id):
-    path = "/identity"
     uri = BASE_URL + path
     data = {"identifier": id}
 
@@ -68,9 +64,8 @@ def test_create_identifier_get_user_valid_input(id):
     assert jsonpath.jsonpath(get_response_json, "$.gender")
 
 
-@pytest.mark.parametrize("id", ["JO1997M", "VIKO1988M"])
+@pytest.mark.parametrize("id", EXISTING_PATIENT_IDs)
 def test_create_identifier_record_exists(id):
-    path = "/identity"
     uri = BASE_URL + path
     data = {"identifier": id}
 

@@ -11,7 +11,10 @@ This code is a collection of tests that test the functionality of a patient iden
 - Chrome browser
 
 ## How to Run the Tests
-1. 
+1. Create a python virtual environment using the following command on commandline/terminal
+```cmd 
+python3 -m venv  venv
+```
 2. Ensure that you have the necessary dependencies installed (see the requirements.txt)
 3. Run the following command to launch the test server 
 ```cmd 
@@ -20,7 +23,15 @@ flask run
 ```
 4. Run the follwing command 
 ```cmd
-cd ..
 pytest
 ``` 
-in the directory where the test file is located.
+in the directory where the test files are located.
+
+
+## Assumptions
+
+Following were the assumptions made
+
+1. Patient name could be a combination of any number of words example John Doe, Jane Robert Doe , Steven John Joe Doe all are valid names.
+2. VIKO1988M and JO1997M patient identifer are already present in the database and hence we get an 409 status code back when trying to do POST request to /identity api with these Ids as body.
+3. All the API and web pages have the same base url.
