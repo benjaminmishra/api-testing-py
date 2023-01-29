@@ -1,6 +1,5 @@
 import json
 from flask import Flask, request, jsonify, Response, render_template
-from enum import Enum
 import re
 
 app = Flask(__name__)

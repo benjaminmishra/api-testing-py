@@ -11,5 +11,16 @@ This code is a collection of tests that test the functionality of a patient iden
 - Chrome browser
 
 ## How to Run the Tests
-Ensure that you have the necessary dependencies installed (requests, json, jsonpath, pytest)
-Run the command pytest in the directory where the test file is located.
+1. 
+2. Ensure that you have the necessary dependencies installed (see the requirements.txt)
+3. Run the following command to launch the test server 
+```cmd 
+cd api-server 
+flask run
+```
+4. Run the follwing command 
+```cmd
+cd ..
+pytest
+``` 
+in the directory where the test file is located.
