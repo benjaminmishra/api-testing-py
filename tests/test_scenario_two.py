@@ -3,15 +3,17 @@ import json
 import jsonpath
 import pytest
 
-baseUrl = "http://127.0.0.1:5000"
+from test_data import INVALID_PATIENT_IDs, BASE_URL
+
+BASE_URL = "http://127.0.0.1:5000"
 
 
 # Tests the POST /identity API call
 # Checks whether the api responds with Bad Request (400) if the identifier passed is invalid
-@pytest.mark.parametrize("id", ["", " ", "123()TEST", "MFRT8901M"])
+@pytest.mark.parametrize("id", INVALID_PATIENT_IDs)
 def test_create_identifier_invalid_input(id):
     path = "/identity"
-    uri = baseUrl + path
+    uri = BASE_URL + path
     body = {"identifier": id}
 
     post_response = requests.post(
@@ -26,10 +28,10 @@ def test_create_identifier_invalid_input(id):
 
 # Tests the GET /identity API call
 # Checks whether the api responds with Bad Request (400) if the identifier passed is invalid
-@pytest.mark.parametrize("id", ["", " ", "123()TEST", "MFRT8901M"])
+@pytest.mark.parametrize("id", INVALID_PATIENT_IDs)
 def get_user_invalid_input(id):
     path = "/identity"
-    uri = baseUrl + path
+    uri = BASE_URL + path
     data = {"identifier": id}
 
     get_response = requests.get(url=uri, params=data)
@@ -46,7 +48,7 @@ def get_user_invalid_input(id):
 @pytest.mark.parametrize("id", ["AP1989M", "MHDH1988M", "JURO1979F"])
 def test_create_identifier_get_user_valid_input(id):
     path = "/identity"
-    uri = baseUrl + path
+    uri = BASE_URL + path
     data = {"identifier": id}
 
     post_response = requests.post(
@@ -69,7 +71,7 @@ def test_create_identifier_get_user_valid_input(id):
 @pytest.mark.parametrize("id", ["JO1997M", "VIKO1988M"])
 def test_create_identifier_record_exists(id):
     path = "/identity"
-    uri = baseUrl + path
+    uri = BASE_URL + path
     data = {"identifier": id}
 
     post_response = requests.post(

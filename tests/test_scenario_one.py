@@ -3,7 +3,7 @@ import json
 import jsonpath
 import pytest
 
-baseUrl = "http://127.0.0.1:5000"
+from tests.test_data import BASE_URL
 
 
 @pytest.mark.parametrize(
@@ -17,7 +17,7 @@ baseUrl = "http://127.0.0.1:5000"
 def test_get_patient_identifier_when_all_params_valid(name, dob, gender, expected_id):
     # arrange
     path = "/patients/identifier"
-    uri = baseUrl + path + "?name=" + name + "&dob=" + dob + "&gender=" + gender
+    uri = BASE_URL + path + "?name=" + name + "&dob=" + dob + "&gender=" + gender
 
     # act
     response = requests.get(url=uri)
@@ -44,7 +44,7 @@ def test_get_patient_identifier_when_atleast_one_input_invalid(
 ):
     # arrange
     path = "/patients/identifier"
-    uri = baseUrl + path + "?name=" + name + "&dob=" + dob + "&gender=" + gender
+    uri = BASE_URL + path + "?name=" + name + "&dob=" + dob + "&gender=" + gender
 
     # act
     response = requests.get(url=uri)
@@ -57,7 +57,7 @@ def test_get_patient_identifier_when_no_inputs():
 
     # arrange
     path = "/patients/identifier"
-    uri = baseUrl + path
+    uri = BASE_URL + path
 
     # act
     response = requests.get(url=uri)

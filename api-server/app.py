@@ -86,7 +86,7 @@ def searchresults():
     user = {}
 
     if not validate_id(id):
-        error["error"] = "Invalid input"
+        error["error"] = "Invalid patient id"
         return render_template('search-results.html',err_msg=error["error"], id=id)
 
     if id == "AP1989M":
@@ -109,7 +109,7 @@ def searchresults():
         user = {"name": "Virat Kohli", "dob": "1988", "gender": "Male"}
         return render_template('search-results.html',name=user["name"],dob=user["dob"],gender=user["gender"])
 
-    error["error"] = "No patient mateches the identifier"
+    error["error"] = "No patient matches the identifier"
     return render_template('search-results.html',err_msg=error["error"], id=id)
     
 
