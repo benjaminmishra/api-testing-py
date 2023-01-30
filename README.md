@@ -35,3 +35,8 @@ Following were the assumptions made
 1. Patient name could be a combination of any number of words example John Doe, Jane Robert Doe , Steven John Joe Doe all are valid names.
 2. VIKO1988M and JO1997M patient identifer are already present in the database and hence we get an 409 status code back when trying to do POST request to /identity api with these Ids as body.
 3. All the API and web pages have the same base url.
+
+## Further improvements to be made
+1. We can execute the scenario 3 tests in multiple browsers.
+2. All tests need to be executed in parallel.
+3. Include confirguration files for saving the base url and api path values.
