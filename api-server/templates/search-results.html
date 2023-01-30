@@ -50,8 +50,7 @@
         found_div.style.display = "none";
         notfound_div.style.display = "none";
 
-        // Check if the query string contains a patient identifier
-
+        // Check if there is an error message otherwise display the patient found
         if (err == undefined || err == '') {
             // If err_msg is not set, display the "found_div" and hide the "notfound_div"
             found_div.style.display = "block";

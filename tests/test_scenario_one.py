@@ -7,6 +7,7 @@ from test_data import BASE_URL
 
 path = "/patients/identifier"
 
+
 @pytest.mark.parametrize(
     "name,dob,gender,expected_id",
     [

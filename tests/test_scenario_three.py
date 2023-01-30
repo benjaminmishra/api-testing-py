@@ -2,7 +2,13 @@ from selenium import webdriver
 from selenium.webdriver.common.by import By
 import pytest
 
-from test_data import VALID_PATIENT_IDs, INVALID_PATIENT_IDs,NON_EXISTING_PATIENT_IDs, BASE_URL
+from test_data import (
+    VALID_PATIENT_IDs,
+    INVALID_PATIENT_IDs,
+    NON_EXISTING_PATIENT_IDs,
+    BASE_URL,
+)
+
 
 @pytest.fixture
 def driver():
@@ -10,8 +16,9 @@ def driver():
     yield _driver
     _driver.close()
 
+
 @pytest.mark.parametrize("id", VALID_PATIENT_IDs)
-def test_search_valid_id(driver,id):
+def test_search_valid_id(driver, id):
     # navigate to the search page
     driver.get(BASE_URL)
 
@@ -49,7 +56,7 @@ def test_search_valid_id(driver,id):
 
 
 @pytest.mark.parametrize("id", NON_EXISTING_PATIENT_IDs)
-def test_search_non_existing_id(driver,id):
+def test_search_non_existing_id(driver, id):
     driver.get(BASE_URL)
 
     # locate the search input element
@@ -81,8 +88,9 @@ def test_search_non_existing_id(driver,id):
     assert identifier.is_displayed
     assert identifier_txt in driver.current_url
 
+
 @pytest.mark.parametrize("id", INVALID_PATIENT_IDs)
-def test_search_invalid_ids(driver,id):
+def test_search_invalid_ids(driver, id):
     driver.get(BASE_URL)
 
     # locate the search input element
@@ -104,7 +112,9 @@ def test_search_invalid_ids(driver,id):
     assert "Search Results" in driver.title
 
     invalid_patient_id_err_msg = driver.find_element(by=By.ID, value="not_found_err")
-    invalid_patient_id_err_msg_txt = invalid_patient_id_err_msg.get_attribute("innerHTML")
+    invalid_patient_id_err_msg_txt = invalid_patient_id_err_msg.get_attribute(
+        "innerHTML"
+    )
     identifier = driver.find_element(by=By.ID, value="identifer")
 
     # assert that the Invlid message is displayed

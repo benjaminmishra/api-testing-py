@@ -3,7 +3,12 @@ import json
 import jsonpath
 import pytest
 
-from test_data import EXISTING_PATIENT_IDs, VALID_PATIENT_IDs,INVALID_PATIENT_IDs, BASE_URL
+from test_data import (
+    EXISTING_PATIENT_IDs,
+    VALID_PATIENT_IDs,
+    INVALID_PATIENT_IDs,
+    BASE_URL,
+)
 
 path = "/identity"
 
